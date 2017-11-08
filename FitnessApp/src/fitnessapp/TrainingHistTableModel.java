@@ -9,14 +9,14 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author celine_yin
  */
-public class SessionTableModel extends AbstractTableModel {
+public class TrainingHistTableModel extends AbstractTableModel {
     // set up the column headers
     private static final String[] colHeader = {"Session ID", "Title", "Date", 
-        "Time", "Fee (RM)", "Type", "Trainer Name", "Trainer's Specialty", "Rating"};
-    // This model manages an array of session objects to display available training sessions
+        "Time", "Type"};
+    // This model manages an array of session objects for training history
     private ArrayList<TrainingSession> sessions;
 
-    public SessionTableModel(ArrayList<TrainingSession> sessions) {
+    public TrainingHistTableModel(ArrayList<TrainingSession> sessions) {
         setSessions(sessions);
     }
     
@@ -25,7 +25,9 @@ public class SessionTableModel extends AbstractTableModel {
     }
     
     @Override
-    // number of rows is the size of the arraylist (all sessions)
+    // number of rows is the size of the arraylist 
+    // for member: all sessions registered by the member
+    // for trainer: all sessions created by the trainer
     public int getRowCount() {
         return sessions.size();
     }
@@ -52,11 +54,7 @@ public class SessionTableModel extends AbstractTableModel {
             case 1: return theSession.getTitle();
             case 2: return theSession.getDate();
             case 3: return theSession.getTime();
-            case 4: return String.format("%.2f", theSession.getFee());
-            case 5: return type;
-            case 6: return theSession.getTrainer().getFullName();
-            case 7: return theSession.getTrainer().getSpecialty();
-            case 8: return rating;
+            case 4: return type;
             default: return "";
         }
     }

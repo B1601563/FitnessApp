@@ -173,7 +173,7 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
 
         maxPaxSP.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
-        classTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sport", "Dance", "MMA" }));
+        classTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dance", "MMA", "Sport" }));
 
         gDateTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
         gDateTF.setToolTipText("dd/mm/yyyy");
@@ -333,11 +333,13 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(this, "Fee cannot be negative.",
                         "Error", JOptionPane.ERROR_MESSAGE);               
                 } else {
-                    PersonalTraining pSession = new PersonalTraining(pTitle, sessionDate, sessionTime, sessionFee, theTrainer);
-                    helpfit.addTrainingSession(pSession);
-                    JOptionPane.showMessageDialog(this, "Personal Training created successfully!\n" + pSession.toString(),
-                    "Success!", JOptionPane.INFORMATION_MESSAGE);
-                    this.setVisible(false);
+                    PersonalTraining pSession = theTrainer.addPersonalTraining(pTitle, sessionDate, sessionTime, sessionFee);            
+                    if (pSession != null) { // add to HELPFit's list of trainings
+                        helpfit.addTrainingSession(pSession);
+                        JOptionPane.showMessageDialog(this, "Personal Training created successfully!\n" + pSession.toString(),
+                        "Success!", JOptionPane.INFORMATION_MESSAGE);
+                        this.setVisible(false);
+                    }
                 }
             }
 
@@ -390,15 +392,17 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
                 } else if (sessionFee < 0) {
                     JOptionPane.showMessageDialog(this, "Fee cannot be negative.",
                         "Error", JOptionPane.ERROR_MESSAGE);               
-                } else if (maxPax < 0){
+                } else if (maxPax <= 0){
                     JOptionPane.showMessageDialog(this, "Max participants must be positive.",
                     "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    GroupTraining gSession = new GroupTraining(gTitle, sessionDate, sessionTime, sessionFee, classType, maxPax, theTrainer);
-                    helpfit.addTrainingSession(gSession);
-                    JOptionPane.showMessageDialog(this, "Group Training created successfully!\n" + gSession.toString(),
-                    "Success!", JOptionPane.INFORMATION_MESSAGE);
-                    this.setVisible(false);
+                    GroupTraining gSession = theTrainer.addGroupTraining(gTitle, sessionDate, sessionTime, sessionFee, classType, maxPax);  
+                    if (gSession != null) { // add to HELPFit's list of trainings
+                        helpfit.addTrainingSession(gSession);
+                        JOptionPane.showMessageDialog(this, "Group Training created successfully!\n" + gSession.toString(),
+                        "Success!", JOptionPane.INFORMATION_MESSAGE);
+                        this.setVisible(false);
+                    }
                 }
             }
         

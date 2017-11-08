@@ -30,7 +30,13 @@ public class EditMemberProfileDialog extends javax.swing.JDialog {
         pwdTF.setText(theMember.getPassword());
         fNameTF.setText(theMember.getFullName());
         emailTF.setText(theMember.getEmail());
-        levelCB.setSelectedItem(theMember.getLevel());
+        
+        if (theMember.getLevel().toString().equalsIgnoreCase("Beginner"))
+            levelCB.setSelectedIndex(0);
+        else if (theMember.getLevel().toString().equalsIgnoreCase("Advanced"))
+            levelCB.setSelectedIndex(1);
+        else
+            levelCB.setSelectedIndex(2);
     }
 
     /**

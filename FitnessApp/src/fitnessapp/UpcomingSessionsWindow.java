@@ -4,6 +4,7 @@ package fitnessapp;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -16,10 +17,7 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
     private HELPFit helpfit;
     private HFGUI hfgui;
     private Member theMember;
-    private SessionTableModel stm;            // to store data for the session table
-    // to keep track of the sessions and each row
-    private TrainingSession theSession;
-    private int row;
+    private SessionTableModel stm;    // to store data for the session table
     
     /**
      * Creates new form UpcomingSessionsWindow
@@ -28,7 +26,7 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setTitle("Upcoming Available Sessions");
-        setSize(850, 550);
+        setSize(950, 550);
         // set location to center of screen
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
@@ -42,10 +40,12 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
 
         this.theMember = theMember;
         
-        setupTableModels();                          // call this method to set up table models
+        setupTableModels();                  // call this method to set up table models
     }
     
-    // add a method to manage the table views and table models
+    /**
+     * A method to manage the table views and table models for upcoming training sessions
+     */
     public void setupTableModels() {        
         if (helpfit.showUpcomingTrainingSessions().toString().equals("[]")) {
             sessionsLbl.setText("No available upcoming training sessions.");
@@ -54,7 +54,7 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
 
         stm = new SessionTableModel(helpfit.showUpcomingTrainingSessions());   // get all upcoming available sessions
         sessionsTable.setModel(stm);          // put the data in the Jtable
-        // add: set up to allow multple sessions to be selected for registration
+        // set up to allow multple sessions to be selected for registration
         sessionsTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
     }
@@ -73,7 +73,7 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
         registerBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         sessionsTable = new javax.swing.JTable();
-        cancelBtn = new javax.swing.JButton();
+        closeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -103,10 +103,10 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(sessionsTable);
 
-        cancelBtn.setText("Cancel");
-        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+        closeBtn.setText("Close");
+        closeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBtnActionPerformed(evt);
+                closeBtnActionPerformed(evt);
             }
         });
 
@@ -114,52 +114,69 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(385, 385, 385)
-                                .addComponent(welcomeMsgLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
-                                .addGap(165, 165, 165)
-                                .addComponent(sessionsLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(cancelBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(registerBtn))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1048, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(21, 21, 21))
+                        .addComponent(welcomeMsgLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(259, 259, 259))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(sessionsLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(251, 251, 251))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(closeBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(registerBtn))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 876, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(welcomeMsgLbl)
                 .addGap(18, 18, 18)
                 .addComponent(sessionsLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelBtn)
+                    .addComponent(closeBtn)
                     .addComponent(registerBtn))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+    private void closeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtnActionPerformed
         this.dispose();
-    }//GEN-LAST:event_cancelBtnActionPerformed
+    }//GEN-LAST:event_closeBtnActionPerformed
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
-        
+        int[] rows = sessionsTable.getSelectedRows();
+        for (int i: rows) {
+            TrainingSession availableSession = stm.getSessionAt(i);
+            if (theMember.getTrainingSessions().contains(availableSession)) {
+                JOptionPane.showMessageDialog(this, "You have already registered for this session (" +
+                        availableSession.getSessionID() + ").",
+                    "Message", JOptionPane.WARNING_MESSAGE);
+            } else {
+                
+                if (availableSession.register(theMember)) {
+                    JOptionPane.showMessageDialog(this, "You have successfully registered for session " +
+                        availableSession.getSessionID() + ".",
+                    "Success!", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Failed to register for session (" +
+                        availableSession.getSessionID() + ").",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
     }//GEN-LAST:event_registerBtnActionPerformed
 
     /**
@@ -205,7 +222,7 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancelBtn;
+    private javax.swing.JButton closeBtn;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton registerBtn;
     private javax.swing.JLabel sessionsLbl;
