@@ -71,7 +71,7 @@ public class GroupTraining extends TrainingSession implements Serializable {
     
     
     public String toString() {
-        String info =  "Session ID: " + this.sessionID + "\nTraining Type: Group Class " + this.classType +  "\nTitle: " + this.title + "\nDate: " + this.date + "\nTime: " + this.time + "\nFee: RM" + this.fee;
+        String info =  "Session ID: " + this.sessionID + "\nTraining Type: Group Class " + this.classType +  "\nTitle: " + this.title + "\nDate: " + this.date + "\nTime: " + this.time +  String.format("\nFee: RM%.2f", this.fee);
         info += "\nNumber of places: " + this.maxParticipants;
         info += "\nNumber registered :" + this.getNumParticipants();
         info +="\nStatus :" + this.getStatus();

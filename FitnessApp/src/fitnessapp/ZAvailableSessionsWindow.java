@@ -12,9 +12,9 @@ import javax.swing.event.ListSelectionListener;
  *
  * @author celine_yin
  */
-public class AvailableSessionsWindow extends javax.swing.JFrame {
+public class ZAvailableSessionsWindow extends javax.swing.JFrame {
     private HELPFit helpfit;
-    private MemberMenuDialog theParent;
+    private ZMemberMenuDialog theParent;
     private SessionTableModel stm;            // to store data for the session table
     // to keep track of the sessions and each row
     private TrainingSession theSession;
@@ -23,7 +23,7 @@ public class AvailableSessionsWindow extends javax.swing.JFrame {
     /**
      * Creates new form AvailableSessionsWindow
      */
-    public AvailableSessionsWindow(HELPFit h, MemberMenuDialog parentWindow) {
+    public ZAvailableSessionsWindow(HELPFit h, ZMemberMenuDialog parentWindow) {
         helpfit = h;
         theParent = parentWindow;               // keep track of the parent (Member menu)
         initComponents();
@@ -145,20 +145,21 @@ public class AvailableSessionsWindow extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AvailableSessionsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZAvailableSessionsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AvailableSessionsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZAvailableSessionsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AvailableSessionsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZAvailableSessionsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AvailableSessionsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZAvailableSessionsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AvailableSessionsWindow().setVisible(true);
+                new ZAvailableSessionsWindow().setVisible(true);
             }
         });
     }

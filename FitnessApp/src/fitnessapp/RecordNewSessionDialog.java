@@ -2,6 +2,9 @@ package fitnessapp;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.*;
 import javax.swing.*;
 
 /**
@@ -15,11 +18,10 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
     /**
      * Creates new form RecordNewSessionDialog
      */
-    public RecordNewSessionDialog(java.awt.Frame parent, boolean modal, Trainer theTrainer) {
+    public RecordNewSessionDialog(java.awt.Frame parent, boolean modal, Trainer theTrainer){
         super(parent, modal);
         initComponents();
         setTitle("Record New Training Session");
-        setSize(450, 400);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         helpfit = ((HFGUI) parent).getHELPFit();
@@ -45,22 +47,22 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        pDateTF = new javax.swing.JTextField();
-        pTimeTF = new javax.swing.JTextField();
         pFeeTF = new javax.swing.JTextField();
+        pDateTF = new javax.swing.JFormattedTextField();
+        pTimeTF = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         gTitleTF = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        gDateTF = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        gTimeTF = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         maxPaxSP = new javax.swing.JSpinner();
         classTypeCB = new javax.swing.JComboBox<>();
         gFeeTF = new javax.swing.JTextField();
+        gDateTF = new javax.swing.JFormattedTextField();
+        gTimeTF = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,6 +71,7 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
         jLabel1.setText("Record New Training Session");
 
         createBtn.setText("Create");
+        createBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         createBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createBtnActionPerformed(evt);
@@ -76,17 +79,22 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
         });
 
         cancelBtn.setText("Cancel");
+        cancelBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelBtnActionPerformed(evt);
             }
         });
 
+        trainingTypeTab.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        trainingTypeTab.setToolTipText("");
         trainingTypeTab.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 trainingTypeTabStateChanged(evt);
             }
         });
+
+        jPanel1.setToolTipText("");
 
         jLabel2.setText("Title:");
 
@@ -96,52 +104,60 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
 
         jLabel5.setText("Fee (RM):");
 
+        pDateTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        pDateTF.setToolTipText("dd/mm/yyyy");
+
+        pTimeTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        pTimeTF.setToolTipText("hh:mm AM/PM");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(pTimeTF)
-                        .addComponent(pDateTF)
-                        .addComponent(pTitleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pFeeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54))
+                    .addComponent(pTitleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pFeeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(pDateTF, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(pTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(pTitleTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(pDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(pTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(pFeeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(pTitleTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(pTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(pDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(pFeeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         trainingTypeTab.addTab("Personal", jPanel1);
+
+        jPanel2.setToolTipText("");
 
         jLabel6.setText("Title:");
 
@@ -155,7 +171,15 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
 
         jLabel11.setText("Class type:");
 
-        classTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        maxPaxSP.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        classTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sport", "Dance", "MMA" }));
+
+        gDateTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        gDateTF.setToolTipText("dd/mm/yyyy");
+
+        gTimeTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        gTimeTF.setToolTipText("hh:mm AM/PM");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -165,26 +189,31 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(33, 33, 33))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(20, 20, 20))
+                            .addComponent(jLabel8)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel11))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(classTypeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(maxPaxSP, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(gTitleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(gFeeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(gTimeTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(gTitleTF, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-                    .addComponent(gTimeTF)
-                    .addComponent(gDateTF)
-                    .addComponent(classTypeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(maxPaxSP, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gFeeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(242, 242, 242))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,27 +222,27 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(gTitleTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(gDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(27, 27, 27)
+                .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(gFeeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(maxPaxSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(classTypeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                    .addComponent(maxPaxSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(classTypeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         trainingTypeTab.addTab("Group", jPanel2);
@@ -222,69 +251,157 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cancelBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(createBtn)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(trainingTypeTab, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancelBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(createBtn)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(trainingTypeTab, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(trainingTypeTab, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(trainingTypeTab, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createBtn)
                     .addComponent(cancelBtn))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
+        DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("d/M/y");
+        DateTimeFormatter timeformat = DateTimeFormatter.ofPattern("h:m a");
+        
+        LocalDate sessionDate = null;
+        LocalTime sessionTime = null;
         // Personal tab is chosen
-        if (tabIndex == 1) {
+        if (tabIndex == 0) {
             // get the values entered in the text fields
             String pTitle = pTitleTF.getText();
             String pDate = pDateTF.getText();
             String pTime = pTimeTF.getText();
-            double pFee = Double.parseDouble(pFeeTF.getText());
+            String pFee = pFeeTF.getText();
+         
+            if (pTitle.equals("") || pDate.equals("") || pTime.equals("")
+                || pFee.equals("")) {
+                JOptionPane.showMessageDialog(this, "You must not leave any fields empty.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                double sessionFee = -1;
+                try {
+                    sessionDate = LocalDate.parse(pDate, dateformat);
+                } catch (DateTimeParseException dtpe) {
+                    JOptionPane.showMessageDialog(this, 
+                        "Invalid date entered, please re-enter date as dd/mm/yyyy",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                try {
+                    String time = pTime.toUpperCase();
+                    sessionTime = LocalTime.parse(time, timeformat);
+                } catch (DateTimeParseException dtpe) {
+                    JOptionPane.showMessageDialog(this, 
+                        "Invalid time entered, please re-enter time as HH:MM AM/PM",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                // convert fee from String to double
+                try {
+                    sessionFee = Double.parseDouble(pFee);
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(this, 
+                        "Invalid fee entered, please re-enter fee as a number greater or equal to 0.",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                if (sessionDate.isBefore(LocalDate.now())) {
+                    JOptionPane.showMessageDialog(this, "Session cannot be before today.",
+                        "Error", JOptionPane.ERROR_MESSAGE);                
+                } else if (sessionFee < 0) {
+                    JOptionPane.showMessageDialog(this, "Fee cannot be negative.",
+                        "Error", JOptionPane.ERROR_MESSAGE);               
+                } else {
+                    PersonalTraining pSession = new PersonalTraining(pTitle, sessionDate, sessionTime, sessionFee, theTrainer);
+                    helpfit.addTrainingSession(pSession);
+                    JOptionPane.showMessageDialog(this, "Personal Training created successfully!\n" + pSession.toString(),
+                    "Success!", JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                }
+            }
+
         } else {
+            // Group tab is chosen
             // get the values entered in the text fields
             String gTitle = gTitleTF.getText();
             String gDate = gDateTF.getText();
             String gTime = gTimeTF.getText();
-            double gFee = Double.parseDouble(gFeeTF.getText());
+            String gFee = gFeeTF.getText();
             int maxPax = (Integer) maxPaxSP.getValue();
+            TrainingType classType = TrainingType.values()[classTypeCB.getSelectedIndex()];
+            
+            if (gTitle.equals("") || gDate.equals("") || gTime.equals("")
+                || gFee.equals("")) {
+                JOptionPane.showMessageDialog(this, "You must not leave any fields empty.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                double sessionFee = -1;
+                try {
+                    sessionDate = LocalDate.parse(gDate, dateformat);
+                } catch (DateTimeParseException dtpe) {
+                    JOptionPane.showMessageDialog(this, 
+                        "Invalid date entered, please re-enter date as dd/mm/yyyy",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                }
 
-        }
-        
-        
-        
-        if (username.equals("") || password.equals("") || fullName.equals("")
-                || email.equals("") || specialty.equals("")) {
-            JOptionPane.showMessageDialog(this, "You must not leave any fields empty.",
+                try {
+                    String time = gTime.toUpperCase();
+                    sessionTime = LocalTime.parse(time, timeformat);
+                } catch (DateTimeParseException dtpe) {
+                    JOptionPane.showMessageDialog(this, 
+                        "Invalid time entered, please re-enter time as HH:MM AM/PM",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                // convert fee from String to double
+                try {
+                    sessionFee = Double.parseDouble(gFee);
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(this, 
+                        "Invalid fee entered, please re-enter fee as a number greater or equal to 0.",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                
+
+                if (sessionDate.isBefore(LocalDate.now())) {
+                    JOptionPane.showMessageDialog(this, "Session cannot be before today.",
+                        "Error", JOptionPane.ERROR_MESSAGE);                
+                } else if (sessionFee < 0) {
+                    JOptionPane.showMessageDialog(this, "Fee cannot be negative.",
+                        "Error", JOptionPane.ERROR_MESSAGE);               
+                } else if (maxPax < 0){
+                    JOptionPane.showMessageDialog(this, "Max participants must be positive.",
                     "Error", JOptionPane.ERROR_MESSAGE);
-        } else if (helpfit.findUser(username) != null){
-            JOptionPane.showMessageDialog(this, "Username " + username + 
-                    " is already taken. Please choose another username.",
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            Trainer theTrainer = helpfit.addTrainer(username, password, fullName, email, specialty);
-            JOptionPane.showMessageDialog(this, "Trainer registered successfully!\n" + theTrainer.toString(),
+                } else {
+                    GroupTraining gSession = new GroupTraining(gTitle, sessionDate, sessionTime, sessionFee, classType, maxPax, theTrainer);
+                    helpfit.addTrainingSession(gSession);
+                    JOptionPane.showMessageDialog(this, "Group Training created successfully!\n" + gSession.toString(),
                     "Success!", JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
+                    this.setVisible(false);
+                }
+            }
+        
         }
     }//GEN-LAST:event_createBtnActionPerformed
 
@@ -295,7 +412,6 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
     private void trainingTypeTabStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_trainingTypeTabStateChanged
         JTabbedPane sourceTabbedPane = (JTabbedPane) evt.getSource();
         tabIndex = trainingTypeTab.getSelectedIndex();
-        System.out.println("Tab changed to: " + sourceTabbedPane.getTitleAt(index));
     }//GEN-LAST:event_trainingTypeTabStateChanged
 
     /**
@@ -359,9 +475,9 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
     private javax.swing.JButton cancelBtn;
     private javax.swing.JComboBox<String> classTypeCB;
     private javax.swing.JButton createBtn;
-    private javax.swing.JTextField gDateTF;
+    private javax.swing.JFormattedTextField gDateTF;
     private javax.swing.JTextField gFeeTF;
-    private javax.swing.JTextField gTimeTF;
+    private javax.swing.JFormattedTextField gTimeTF;
     private javax.swing.JTextField gTitleTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -377,9 +493,9 @@ public class RecordNewSessionDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSpinner maxPaxSP;
-    private javax.swing.JTextField pDateTF;
+    private javax.swing.JFormattedTextField pDateTF;
     private javax.swing.JTextField pFeeTF;
-    private javax.swing.JTextField pTimeTF;
+    private javax.swing.JFormattedTextField pTimeTF;
     private javax.swing.JTextField pTitleTF;
     private javax.swing.JTabbedPane trainingTypeTab;
     // End of variables declaration//GEN-END:variables

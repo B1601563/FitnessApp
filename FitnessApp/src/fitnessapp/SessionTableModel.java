@@ -12,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
 public class SessionTableModel extends AbstractTableModel {
     // set up the column headers
     private static final String[] colHeader = {"Session ID", "Title", "Date", 
-        "Time", "Fee", "Type", "Trainer", "Rating"};
+        "Time", "Fee (RM)", "Type", "Trainer Name", "Trainer's Specialty", "Rating"};
     // This model manages an array of session objects
     private ArrayList<TrainingSession> sessions;
 
@@ -48,15 +48,15 @@ public class SessionTableModel extends AbstractTableModel {
             rating = theSession.getTrainer().getAverageRating() + "";
         }
         switch(columnIndex) {
-            case 0: return new Integer(theSession.getSessionID());
-            case 1: return new Integer(theSession.getTitle());
+            case 0: return theSession.getSessionID();
+            case 1: return theSession.getTitle();
             case 2: return theSession.getDate();
-            case 3: return theSession.getTime().getHour() + ":"
-                    + theSession.getTime().getMinute();
-            case 4: return theSession.getFee();
+            case 3: return theSession.getTime();
+            case 4: return String.format("%.2f", theSession.getFee());
             case 5: return type;
-            case 6: return theSession.getTrainer();
-            case 7: return rating;
+            case 6: return theSession.getTrainer().getFullName();
+            case 7: return theSession.getTrainer().getSpecialty();
+            case 8: return rating;
             default: return "";
         }
     }

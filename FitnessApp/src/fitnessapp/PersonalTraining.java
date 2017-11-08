@@ -40,6 +40,6 @@ public class PersonalTraining extends TrainingSession implements Serializable {
     }
 
     public String toString() {
-        return "Session ID: " + this.sessionID + "\nTraining Type: Personal Training" + "\nTitle: " + this.title + "\nDate: " + this.date + "\nTime: " + this.time + "\nFee: RM" + this.fee + "\nStatus : " + this.getStatus() + "\nNotes: " + this.getNotes();
+        return "Session ID: " + this.sessionID + "\nTraining Type: Personal Training" + "\nTitle: " + this.title + "\nDate: " + this.date + "\nTime: " + this.time + String.format("\nFee: RM%.2f", this.fee) + "\nStatus : " + this.getStatus() + "\nNotes: " + this.getNotes();
     }
 }

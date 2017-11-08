@@ -20,6 +20,7 @@ public class HFGUI extends javax.swing.JFrame{
         initComponents();
         setTitle("HELPFit Application");
         setSize(700, 550);
+        // set location to center of screen
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         hf = new HELPFit();             // create HELPFit object
@@ -55,6 +56,7 @@ public class HFGUI extends javax.swing.JFrame{
         logInBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         pwdTF = new javax.swing.JPasswordField();
+        rmbMeChk = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         newFileOption = new javax.swing.JMenuItem();
@@ -107,6 +109,7 @@ public class HFGUI extends javax.swing.JFrame{
         memberBtn.setFont(new java.awt.Font("Verdana", 0, 21)); // NOI18N
         memberBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fitnessapp/member.png"))); // NOI18N
         memberBtn.setText(" Be a Member");
+        memberBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         memberBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/fitnessapp/member.png"))); // NOI18N
         memberBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +120,7 @@ public class HFGUI extends javax.swing.JFrame{
         trainerBtn.setBackground(java.awt.Color.lightGray);
         trainerBtn.setFont(new java.awt.Font("Verdana", 0, 21)); // NOI18N
         trainerBtn.setText(" Be a Trainer");
+        trainerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         trainerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 trainerBtnActionPerformed(evt);
@@ -157,6 +161,7 @@ public class HFGUI extends javax.swing.JFrame{
 
         logInBtn.setFont(new java.awt.Font("Verdana", 0, 21)); // NOI18N
         logInBtn.setText("Login");
+        logInBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logInBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logInBtnActionPerformed(evt);
@@ -167,6 +172,9 @@ public class HFGUI extends javax.swing.JFrame{
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Log In");
 
+        rmbMeChk.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        rmbMeChk.setText("Remember me");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -175,19 +183,25 @@ public class HFGUI extends javax.swing.JFrame{
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 33, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pwdTF, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(jLabel4)))
-                                .addGap(2, 2, 2))
-                            .addComponent(logInBtn)
-                            .addComponent(pwdTF))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3)
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addComponent(jLabel4)))
+                                        .addGap(2, 2, 2))
+                                    .addComponent(logInBtn, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(rmbMeChk)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(28, 28, 28))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -198,14 +212,16 @@ public class HFGUI extends javax.swing.JFrame{
                 .addGap(38, 38, 38)
                 .addComponent(jLabel3)
                 .addGap(4, 4, 4)
-                .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel4)
                 .addGap(7, 7, 7)
-                .addComponent(pwdTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pwdTF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rmbMeChk)
+                .addGap(27, 27, 27)
                 .addComponent(logInBtn)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         jMenu1.setText("File");
@@ -356,6 +372,12 @@ public class HFGUI extends javax.swing.JFrame{
                 JOptionPane.showMessageDialog(this, "The password entered is incorrect.",
                     "Error", JOptionPane.ERROR_MESSAGE);
             } else {
+                // if remember me checkbox not selected, 
+                // clear the username and password textboxes
+                if (!rmbMeChk.isSelected()) {
+                    usernameTF.setText("");
+                    pwdTF.setText("");
+                }
                 /* login successful */
                 // if user is a member
                 if (theUser instanceof Member) {
@@ -446,6 +468,7 @@ public class HFGUI extends javax.swing.JFrame{
     private javax.swing.JButton memberBtn;
     private javax.swing.JMenuItem newFileOption;
     private javax.swing.JPasswordField pwdTF;
+    private javax.swing.JCheckBox rmbMeChk;
     private javax.swing.JMenuItem saveFileOption;
     private javax.swing.JButton trainerBtn;
     private javax.swing.JTextField usernameTF;

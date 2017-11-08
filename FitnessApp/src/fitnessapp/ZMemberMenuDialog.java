@@ -8,14 +8,14 @@ import javax.swing.JDialog;
  *
  * @author celine_yin
  */
-public class MemberMenuDialog extends javax.swing.JDialog {
+public class ZMemberMenuDialog extends javax.swing.JDialog {
     private HELPFit helpfit;
     private HFGUI hfgui;
     private Member theMember;
     /**
      * Creates new form MemberMenuDialog
      */
-    public MemberMenuDialog(java.awt.Frame parent, boolean modal, Member theMember) {
+    public ZMemberMenuDialog(java.awt.Frame parent, boolean modal, Member theMember) {
         super(parent, modal);
         initComponents();
         setTitle("Member Menu");
@@ -161,20 +161,21 @@ public class MemberMenuDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MemberMenuDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZMemberMenuDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MemberMenuDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZMemberMenuDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MemberMenuDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZMemberMenuDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MemberMenuDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ZMemberMenuDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                MemberMenuDialog dialog = new MemberMenuDialog(new javax.swing.JFrame(), true, null);
+                ZMemberMenuDialog dialog = new ZMemberMenuDialog(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
