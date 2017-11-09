@@ -15,7 +15,6 @@ import javax.swing.ListSelectionModel;
  * @author celine_yin
  */
 public class MemberTrainingHistoryDialog extends javax.swing.JDialog {
-    private HELPFit helpfit;
     private HFGUI hfgui;
     private Member theMember;
     private TrainingHistTableModel thtm;   // to store data for the training history table
@@ -27,10 +26,9 @@ public class MemberTrainingHistoryDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setTitle("Member Training History");
-        setSize(950, 550);
+        setSize(850, 550);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-        helpfit = ((HFGUI) parent).getHELPFit();
         
         // make HFGUI the parent of the dialog also
         hfgui = (HFGUI) this.getParent();
@@ -95,7 +93,8 @@ public class MemberTrainingHistoryDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        trainingHistLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        trainingHistLbl.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        trainingHistLbl.setForeground(new java.awt.Color(153, 0, 102));
         trainingHistLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         trainingHistLbl.setText("My Training History");
 
@@ -112,35 +111,41 @@ public class MemberTrainingHistoryDialog extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(trainingHistTable);
 
+        closeBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         closeBtn.setText("Close");
+        closeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         closeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeBtnActionPerformed(evt);
             }
         });
 
+        displayTrainingLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         displayTrainingLbl.setText(" ");
 
-        sortByCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort by", "Date", "Class Type" }));
+        sortByCB.setBackground(new java.awt.Color(153, 0, 102));
+        sortByCB.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        sortByCB.setForeground(new java.awt.Color(255, 255, 255));
+        sortByCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort by", "Session ID", "Date", "Class Type" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sortByCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(trainingHistLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(sortByCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(159, 159, 159)
+                        .addComponent(displayTrainingLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(closeBtn)))
                 .addGap(21, 21, 21))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(290, 290, 290)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(displayTrainingLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(trainingHistLbl))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +160,7 @@ public class MemberTrainingHistoryDialog extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(closeBtn)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

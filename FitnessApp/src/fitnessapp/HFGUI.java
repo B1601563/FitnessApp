@@ -73,7 +73,7 @@ public class HFGUI extends javax.swing.JFrame{
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome to HELPFit!");
 
-        jPanel1.setBackground(new java.awt.Color(0, 20, 80));
+        jPanel1.setBackground(new java.awt.Color(0, 40, 80));
 
         jPanel6.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -103,10 +103,11 @@ public class HFGUI extends javax.swing.JFrame{
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Sign Up Now:");
+        jLabel2.setText("Sign Up Now");
 
         memberBtn.setBackground(java.awt.Color.lightGray);
         memberBtn.setFont(new java.awt.Font("Verdana", 0, 21)); // NOI18N
+        memberBtn.setForeground(new java.awt.Color(153, 0, 102));
         memberBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fitnessapp/member.png"))); // NOI18N
         memberBtn.setText(" Be a Member");
         memberBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -119,6 +120,8 @@ public class HFGUI extends javax.swing.JFrame{
 
         trainerBtn.setBackground(java.awt.Color.lightGray);
         trainerBtn.setFont(new java.awt.Font("Verdana", 0, 21)); // NOI18N
+        trainerBtn.setForeground(new java.awt.Color(0, 0, 153));
+        trainerBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fitnessapp/trainerIcon.png"))); // NOI18N
         trainerBtn.setText(" Be a Trainer");
         trainerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         trainerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +162,9 @@ public class HFGUI extends javax.swing.JFrame{
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 21)); // NOI18N
         jLabel4.setText("Password:");
 
+        logInBtn.setBackground(new java.awt.Color(0, 0, 0));
         logInBtn.setFont(new java.awt.Font("Verdana", 0, 21)); // NOI18N
+        logInBtn.setForeground(new java.awt.Color(255, 255, 255));
         logInBtn.setText("Login");
         logInBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logInBtn.addActionListener(new java.awt.event.ActionListener() {

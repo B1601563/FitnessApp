@@ -21,7 +21,7 @@ public class MemberMenuFrame extends javax.swing.JFrame {
         super();
         initComponents();
         setTitle("Member Menu");
-        setSize(600, 400);
+        setSize(620, 400);
         // set location to center of screen
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
@@ -57,35 +57,52 @@ public class MemberMenuFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        welcomeMsgLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        welcomeMsgLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcomeMsgLbl.setText("Welcome, ");
+        welcomeMsgLbl.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        welcomeMsgLbl.setForeground(new java.awt.Color(153, 0, 102));
+        welcomeMsgLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        welcomeMsgLbl.setText("Welcome, member.");
+        welcomeMsgLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("What would you like to do?");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        editProfileBtn.setText("Edit Profile");
+        editProfileBtn.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        editProfileBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fitnessapp/editProfileIcon.png"))); // NOI18N
+        editProfileBtn.setText(" Edit Profile");
+        editProfileBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         editProfileBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editProfileBtnActionPerformed(evt);
             }
         });
 
-        viewTrainingBtn.setText("View Training History");
+        viewTrainingBtn.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        viewTrainingBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fitnessapp/trainHistIcon.png"))); // NOI18N
+        viewTrainingBtn.setText(" View Training History");
+        viewTrainingBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         viewTrainingBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewTrainingBtnActionPerformed(evt);
             }
         });
 
-        viewAllSessionsBtn.setText("View All Available Sessions");
+        viewAllSessionsBtn.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        viewAllSessionsBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fitnessapp/sessionsIcon.png"))); // NOI18N
+        viewAllSessionsBtn.setText(" Register For Session");
+        viewAllSessionsBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         viewAllSessionsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewAllSessionsBtnActionPerformed(evt);
             }
         });
 
-        logOutBtn.setText("Log Out");
+        logOutBtn.setBackground(new java.awt.Color(255, 51, 51));
+        logOutBtn.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        logOutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fitnessapp/logoutIcon.png"))); // NOI18N
+        logOutBtn.setText(" Log Out");
+        logOutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logOutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logOutBtnActionPerformed(evt);
@@ -97,15 +114,23 @@ public class MemberMenuFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(editProfileBtn)
-                    .addComponent(viewTrainingBtn)
-                    .addComponent(viewAllSessionsBtn)
-                    .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(welcomeMsgLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(welcomeMsgLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(viewAllSessionsBtn)
+                                    .addComponent(viewTrainingBtn))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(editProfileBtn)
+                                    .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(37, 37, 37))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,15 +139,15 @@ public class MemberMenuFrame extends javax.swing.JFrame {
                 .addComponent(welcomeMsgLbl)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(editProfileBtn)
-                .addGap(34, 34, 34)
-                .addComponent(viewAllSessionsBtn)
-                .addGap(18, 18, 18)
-                .addComponent(viewTrainingBtn)
-                .addGap(50, 50, 50)
-                .addComponent(logOutBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewAllSessionsBtn)
+                    .addComponent(editProfileBtn))
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewTrainingBtn)
+                    .addComponent(logOutBtn))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();

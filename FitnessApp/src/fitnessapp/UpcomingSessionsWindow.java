@@ -26,7 +26,7 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setTitle("Upcoming Available Sessions");
-        setSize(950, 550);
+        setSize(950, 500);
         // set location to center of screen
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
@@ -77,13 +77,17 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        welcomeMsgLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        welcomeMsgLbl.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        welcomeMsgLbl.setForeground(new java.awt.Color(153, 0, 102));
         welcomeMsgLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         welcomeMsgLbl.setText("Upcoming Available Sessions");
 
+        sessionsLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         sessionsLbl.setText(" ");
 
+        registerBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         registerBtn.setText("Register");
+        registerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerBtnActionPerformed(evt);
@@ -103,7 +107,9 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(sessionsTable);
 
+        closeBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         closeBtn.setText("Close");
+        closeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         closeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeBtnActionPerformed(evt);
@@ -115,38 +121,36 @@ public class UpcomingSessionsWindow extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(welcomeMsgLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(259, 259, 259))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(closeBtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(registerBtn))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(sessionsLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(251, 251, 251))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(closeBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(registerBtn))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 876, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 19, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(sessionsLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(welcomeMsgLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(193, 193, 193))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(welcomeMsgLbl)
-                .addGap(18, 18, 18)
-                .addComponent(sessionsLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sessionsLbl)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(closeBtn)
                     .addComponent(registerBtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         pack();
