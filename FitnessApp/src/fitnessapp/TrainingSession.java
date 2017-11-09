@@ -9,7 +9,7 @@ import java.util.Objects;
  * TrainingSession is offered by HELPFit
  * @author ngsm
  */
-public abstract class TrainingSession implements Serializable {
+public abstract class TrainingSession implements Serializable, Comparable<TrainingSession> {
     private static int IDnum = 100;
     
     protected String sessionID;
@@ -27,6 +27,11 @@ public abstract class TrainingSession implements Serializable {
     public static int getIDnum() {
         return IDnum;
     }
+
+    public static void setIDnum(int next) {
+        IDnum = next;
+    }
+    
 
     public String getSessionID() {
         return sessionID;
@@ -83,6 +88,11 @@ public abstract class TrainingSession implements Serializable {
         return hash;
     }
 
+    /**
+     * Sessions are equal if they have the same session ID
+     * @param obj the other object we want to compare
+     * @return true if it is another session with the same session ID
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -101,6 +111,16 @@ public abstract class TrainingSession implements Serializable {
         return true;
     }
     
+    /**
+     * compareTo method to compare session IDs for sorting
+     * @param ts
+     * @return -1 if the sessionID comes before ts' sessionID
+     */
+    @Override
+    public int compareTo(TrainingSession ts) {
+        return this.getSessionID().compareTo(ts.getSessionID());
+    }
+
     /**
      * Constructor to create a Training Session, sets the attributes
      * including who the trainer is.
@@ -128,7 +148,6 @@ public abstract class TrainingSession implements Serializable {
         
         this.status = SessionStatus.AVAILABLE;
         this.trainer = trainer;
-             
     }
     
     /**

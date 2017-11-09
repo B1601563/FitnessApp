@@ -312,7 +312,7 @@ public class HFGUI extends javax.swing.JFrame{
             FileHandling.saveToFile(this, hf);
         }
         hf = new HELPFit();
-        // hf.updateSequences();
+        hf.updateSequences();
     }//GEN-LAST:event_newFileOptionActionPerformed
 
     /**
@@ -329,7 +329,14 @@ public class HFGUI extends javax.swing.JFrame{
             FileHandling.saveToFile(this, hf);
         }
         hf = (HELPFit) FileHandling.readFromFile(this);            // downcast
-        // hf.updateSequences();
+        if (hf != null) {
+            JOptionPane.showMessageDialog(this, "File successfully loaded.", 
+                    "Load success!", JOptionPane.INFORMATION_MESSAGE);
+            hf.updateSequences();
+        }
+        else {
+            hf = new HELPFit();
+        }
     }//GEN-LAST:event_loadFileOptionActionPerformed
 
     /**
@@ -341,6 +348,8 @@ public class HFGUI extends javax.swing.JFrame{
         // pass this JFrame and the
         // HELPFit object to save
         FileHandling.saveToFile(this, hf);
+        JOptionPane.showMessageDialog(this, "File successfully saved.", 
+                    "Save success!", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_saveFileOptionActionPerformed
 
     /**

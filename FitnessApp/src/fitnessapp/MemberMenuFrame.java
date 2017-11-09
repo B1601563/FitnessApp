@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
  * @author celine_yin
  */
 public class MemberMenuFrame extends javax.swing.JFrame {
-    private HELPFit helpfit;
     private HFGUI hfgui;
     private Member theMember;
     /**
@@ -29,8 +28,6 @@ public class MemberMenuFrame extends javax.swing.JFrame {
         
         // make HFGUI the parent of this Frame
         hfgui = theParent;
-        
-        helpfit = hfgui.getHELPFit();
 
         // make HFGUI not visible
         hfgui.setVisible(false);

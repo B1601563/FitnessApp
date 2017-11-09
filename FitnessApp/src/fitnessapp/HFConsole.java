@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -386,6 +388,25 @@ public class HFConsole {
      */
     public static void viewTrainingHistory(User theUser) {
         System.out.println(theUser.showTrainingHistory());
+        System.out.println("Sort by: ");
+        System.out.println("1. Date     2. Class types");
+        int sort = sc.nextInt();
+        
+         ArrayList<TrainingSession> sortedSessions = theUser.getTrainingSessions();
+        if (sort == 1) {
+            SessionDateComparator dateComparator = new SessionDateComparator();
+            Collections.sort(sortedSessions, dateComparator);
+            for (TrainingSession s: sortedSessions) {
+                System.out.println(s);
+            }
+        } else {
+            ClassTypeComparator classTypeComparator = new ClassTypeComparator();
+            Collections.sort(sortedSessions, classTypeComparator);
+            for (TrainingSession s: sortedSessions) {
+                System.out.println(s);
+            }
+        }
+        sc.nextLine();
         if (theUser.getNumTrainings() > 0) {
             if (theUser instanceof Trainer) {
                 System.out.println("Would you like to update a session (Y/N)?");

@@ -4,6 +4,10 @@ package fitnessapp;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -32,7 +36,7 @@ public class TrainerTrainingHistoryDialog extends javax.swing.JDialog {
 
         this.theTrainer = theTrainer;
         trainingHistLbl.setText(theTrainer.getFullName() + "'s Training History");
-        
+
         setupTableModels();          // call this method to set up table models
     }
     
@@ -46,6 +50,31 @@ public class TrainerTrainingHistoryDialog extends javax.swing.JDialog {
 
         thtm = new TrainingHistTableModel(theTrainer.getTrainingSessions());   // get all sessions created by the trainer
         trainingHistTable.setModel(thtm);          // put the data in the Jtable
+        
+         ArrayList<TrainingSession> sortedSessions = theTrainer.getTrainingSessions();
+
+         sortByCB.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent ie) {
+                if (ie.getItem().equals("Session ID")) {
+                    Collections.sort(sortedSessions);
+                    thtm.setSessions(sortedSessions);
+                    thtm.fireTableDataChanged();
+                }
+                else if (ie.getItem().equals("Date")) {
+                    SessionDateComparator dateComparator = new SessionDateComparator();
+                    Collections.sort(sortedSessions, dateComparator);
+                    thtm.setSessions(sortedSessions);
+                    thtm.fireTableDataChanged();
+                } else {
+                    ClassTypeComparator classTypeComparator = new ClassTypeComparator();
+                    Collections.sort(sortedSessions, classTypeComparator);
+                    thtm.setSessions(sortedSessions);
+                    thtm.fireTableDataChanged();
+                } 
+            }
+         });
+
     }
 
     /**
@@ -92,7 +121,7 @@ public class TrainerTrainingHistoryDialog extends javax.swing.JDialog {
             }
         });
 
-        sortByCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort by", "Date", "Class Type" }));
+        sortByCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort by", "Session ID", "Date", "Class Type" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

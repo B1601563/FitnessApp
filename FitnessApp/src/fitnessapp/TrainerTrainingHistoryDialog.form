@@ -109,10 +109,11 @@
     <Component class="javax.swing.JComboBox" name="sortByCB">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
+          <StringArray count="4">
             <StringItem index="0" value="Sort by"/>
-            <StringItem index="1" value="Date"/>
-            <StringItem index="2" value="Class Type"/>
+            <StringItem index="1" value="Session ID"/>
+            <StringItem index="2" value="Date"/>
+            <StringItem index="3" value="Class Type"/>
           </StringArray>
         </Property>
       </Properties>

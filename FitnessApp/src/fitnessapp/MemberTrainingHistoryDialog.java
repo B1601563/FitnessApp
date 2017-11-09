@@ -4,6 +4,10 @@ package fitnessapp;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.ListSelectionModel;
 
 /**
@@ -47,6 +51,30 @@ public class MemberTrainingHistoryDialog extends javax.swing.JDialog {
 
         thtm = new TrainingHistTableModel(theMember.getTrainingSessions());   // get all member registered sessions
         trainingHistTable.setModel(thtm);          // put the data in the Jtable
+        
+        ArrayList<TrainingSession> sortedSessions = theMember.getTrainingSessions();
+
+         sortByCB.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent ie) {
+                if (ie.getItem().equals("Session ID")) {
+                    Collections.sort(sortedSessions);
+                    thtm.setSessions(sortedSessions);
+                    thtm.fireTableDataChanged();
+                }
+                else if (ie.getItem().equals("Date")) {
+                    SessionDateComparator dateComparator = new SessionDateComparator();
+                    Collections.sort(sortedSessions, dateComparator);
+                    thtm.setSessions(sortedSessions);
+                    thtm.fireTableDataChanged();
+                } else {
+                    ClassTypeComparator classTypeComparator = new ClassTypeComparator();
+                    Collections.sort(sortedSessions, classTypeComparator);
+                    thtm.setSessions(sortedSessions);
+                    thtm.fireTableDataChanged();
+                } 
+            }
+         });
     }
     
     /**

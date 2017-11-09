@@ -9,6 +9,7 @@ import javax.swing.*;
  * @author celine_yin
  */
 public class SignUpMemberDialog extends javax.swing.JDialog {
+    private HFGUI hfgui;
     private HELPFit helpfit;
     /**
      * Creates new form SignUpMemberDialog
@@ -21,7 +22,10 @@ public class SignUpMemberDialog extends javax.swing.JDialog {
         // set location to center of screen
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-
+        
+        // make HFGUI the parent of the dialog also
+        hfgui = (HFGUI) this.getParent();
+        
         helpfit = ((HFGUI) parent).getHELPFit();
     }
 

@@ -123,4 +123,21 @@ public class HELPFit implements Serializable{
         }
         return sessionsList;
     }
+    
+    /**
+     * A method to update sequences based on existing session IDs 
+     */
+    public void updateSequences(){
+        ArrayList<TrainingSession> sessions = this.hfSessions;
+
+        // Must sort all sessions because they may be based on table
+        Collections.sort(sessions);               
+
+        int lastIndex = sessions.size() - 1;
+        if (lastIndex >= 0)
+            TrainingSession.setIDnum(Integer.parseInt(sessions.get(lastIndex).getSessionID().substring(1))+1);
+        else
+            TrainingSession.setIDnum(100);       // no existing sessions
+
+    }
 }
