@@ -31,7 +31,6 @@
                       <Component id="sortByCB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
                       <Component id="displayTrainingLbl" min="-2" pref="312" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" pref="811" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
@@ -39,7 +38,7 @@
                       <Component id="closeBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

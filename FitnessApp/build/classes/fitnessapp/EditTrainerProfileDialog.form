@@ -24,13 +24,6 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jLabel1" alignment="1" pref="450" max="32767" attributes="0"/>
-          <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="cancelBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="updateBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -42,16 +35,23 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="emailTF" max="32767" attributes="0"/>
-                  <Component id="fNameTF" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="usernameLbl" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="specialtyTF" max="32767" attributes="0"/>
-                  <Component id="pwdTF" min="-2" pref="162" max="-2" attributes="0"/>
+                  <Component id="pwdTF" pref="193" max="32767" attributes="0"/>
+                  <Component id="fNameTF" alignment="0" max="32767" attributes="0"/>
+                  <Component id="emailTF" alignment="0" max="32767" attributes="0"/>
+                  <Component id="specialtyTF" alignment="0" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace pref="60" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="cancelBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="updateBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

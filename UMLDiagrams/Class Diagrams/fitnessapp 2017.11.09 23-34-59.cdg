@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="fitnessapp">
+  <ClassDiagramComponents>
+    <Class name="ClassTypeComparator  " package="fitnessapp" visibility="public" xPosition="10.0" yPosition="37.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="compare" returnType="TrainingSession" visibility="public">
+          <Argument type="TrainingSession" name="ts"/>
+          <Argument type="TrainingSession" name="ts1"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EditMemberProfileDialog   " package="fitnessapp" visibility="public" xPosition="477.0" yPosition="200.0">
+      <Fields>
+        <Field name="theMember" type="Member" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="java.awt.Frame" name="parent"/>
+          <Argument type="boolean" name="modal"/>
+          <Argument type="Member" name="theMember"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="updateBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cancelBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EditTrainerProfileDialog    " package="fitnessapp" visibility="public" xPosition="477.0" yPosition="20.0">
+      <Fields>
+        <Field name="theTrainer" type="Trainer" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="java.awt.Frame" name="parent"/>
+          <Argument type="boolean" name="modal"/>
+          <Argument type="Trainer" name="theTrainer"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="updateBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cancelBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FileHandling  " package="fitnessapp" visibility="public" xPosition="10.0" yPosition="179.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="readFromFile" returnType="javax.swing.JFrame" visibility="public" isStatic="true">
+          <Argument type="javax.swing.JFrame" name="parent"/>
+        </Method>
+        <Method name="openFileChooser" returnType="javax.swing.JFrame" visibility="private" isStatic="true">
+          <Argument type="javax.swing.JFrame" name="parent"/>
+        </Method>
+        <Method name="saveToFile" returnType="Object" visibility="public" isStatic="true">
+          <Argument type="javax.swing.JFrame" name="parent"/>
+          <Argument type="Object" name="theObject"/>
+        </Method>
+        <Method name="saveObject" returnType="Object" visibility="private" isStatic="true">
+          <Argument type="File" name="file"/>
+          <Argument type="Object" name="theObject"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="HELPFit  " package="fitnessapp" visibility="public" xPosition="755.0" yPosition="757.0">
+      <Fields>
+        <Field name="hfUsers" type="ArrayList&lt;User&gt;" visibility="private"/>
+        <Field name="hfSessions" type="ArrayList&lt;TrainingSession&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="addMember" returnType="MemberLevel" visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="fullName"/>
+          <Argument type="String" name="email"/>
+          <Argument type="MemberLevel" name="level"/>
+        </Method>
+        <Method name="addTrainer" returnType="String" visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="fullName"/>
+          <Argument type="String" name="email"/>
+          <Argument type="String" name="specialty"/>
+        </Method>
+        <Method name="addTrainingSession" returnType="TrainingSession" visibility="public">
+          <Argument type="TrainingSession" name="theSession"/>
+        </Method>
+        <Method name="findUser" returnType="String" visibility="public">
+          <Argument type="String" name="username"/>
+        </Method>
+        <Method name="findSession" returnType="String" visibility="public">
+          <Argument type="String" name="sessionID"/>
+        </Method>
+        <Method name="showUpcomingTrainingSessions" returnType="ArrayList&lt;TrainingSession&gt;" visibility="public"/>
+        <Method name="updateSequences" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="HFGUI  " package="fitnessapp" visibility="public" xPosition="1344.0" yPosition="324.0">
+      <Fields>
+        <Field name="hf" type="HELPFit  " visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getHELPFit" returnType="HELPFit  " visibility="public"/>
+        <Method name="newFileOptionActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="loadFileOptionActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="saveFileOptionActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="exitOptionActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="logInBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="trainerBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="memberBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MemberMenuFrame  " package="fitnessapp" visibility="public" xPosition="1998.0" yPosition="1030.0">
+      <Fields>
+        <Field name="hfgui" type="HFGUI  " visibility="private"/>
+        <Field name="theMember" type="Member" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="HFGUI" name="theParent"/>
+          <Argument type="Member" name="theMember"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="editProfileBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="viewTrainingBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="viewAllSessionsBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="logOutBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MemberTrainingHistoryDialog" package="fitnessapp" visibility="public" xPosition="2097.0" yPosition="687.0">
+      <Fields>
+        <Field name="hfgui" type="HFGUI  " visibility="private"/>
+        <Field name="theMember" type="Member" visibility="private"/>
+        <Field name="thtm" type="TrainingHistTableModel  " visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="java.awt.Frame" name="parent"/>
+          <Argument type="boolean" name="modal"/>
+          <Argument type="Member" name="theMember"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setupTableModels" returnType="void" visibility="public"/>
+        <Method name="closeBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RecordNewSessionDialog   " package="fitnessapp" visibility="public" xPosition="32.0" yPosition="757.0">
+      <Fields>
+        <Field name="helpfit" type="HELPFit  " visibility="private"/>
+        <Field name="theTrainer" type="Trainer" visibility="private"/>
+        <Field name="tabIndex" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="java.awt.Frame" name="parent"/>
+          <Argument type="boolean" name="modal"/>
+          <Argument type="Trainer" name="theTrainer"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="createBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cancelBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="trainingTypeTabStateChanged" returnType="javax.swing.event.ChangeEvent" visibility="private">
+          <Argument type="javax.swing.event.ChangeEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SessionDateComparator" package="fitnessapp" visibility="public" xPosition="20.0" yPosition="392.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="compare" returnType="TrainingSession" visibility="public">
+          <Argument type="TrainingSession" name="ts"/>
+          <Argument type="TrainingSession" name="ts1"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SessionTableModel   " package="fitnessapp" visibility="public" xPosition="195.0" yPosition="1134.0">
+      <Fields>
+        <Field name="colHeader" type="String[]" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="sessions" type="ArrayList&lt;TrainingSession&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ArrayList&lt;TrainingSession&gt;" name="sessions"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setSessions" returnType="ArrayList&lt;TrainingSession&gt;" visibility="public">
+          <Argument type="ArrayList&lt;TrainingSession&gt;" name="sessions"/>
+        </Method>
+        <Method name="getValueAt" returnType="int" visibility="public">
+          <Argument type="int" name="rowIndex"/>
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="getColumnName" returnType="int" visibility="public">
+          <Argument type="int" name="column"/>
+        </Method>
+        <Method name="getSessionAt" returnType="int" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SignUpMemberDialog   " package="fitnessapp" visibility="public" xPosition="528.0" yPosition="392.0">
+      <Fields>
+        <Field name="hfgui" type="HFGUI  " visibility="private"/>
+        <Field name="helpfit" type="HELPFit  " visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="java.awt.Frame" name="parent"/>
+          <Argument type="boolean" name="modal"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="signUpBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cancelBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SignUpTrainerDialog   " package="fitnessapp" visibility="public" xPosition="1484.0" yPosition="973.0">
+      <Fields>
+        <Field name="hfgui" type="HFGUI  " visibility="private"/>
+        <Field name="helpfit" type="HELPFit  " visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="java.awt.Frame" name="parent"/>
+          <Argument type="boolean" name="modal"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="signUpBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cancelBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TrainerMenuFrame  " package="fitnessapp" visibility="public" xPosition="1252.0" yPosition="20.0">
+      <Fields>
+        <Field name="hfgui" type="HFGUI  " visibility="private"/>
+        <Field name="theTrainer" type="Trainer" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="HFGUI" name="theParent"/>
+          <Argument type="Trainer" name="theTrainer"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="editProfileBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="viewTrainingBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="recordNewSessionBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="logOutBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TrainerTrainingHistoryDialog   " package="fitnessapp" visibility="public" xPosition="1998.0" yPosition="39.0">
+      <Fields>
+        <Field name="hfgui" type="HFGUI  " visibility="private"/>
+        <Field name="theTrainer" type="Trainer" visibility="private"/>
+        <Field name="thtm" type="TrainingHistTableModel  " visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="java.awt.Frame" name="parent"/>
+          <Argument type="boolean" name="modal"/>
+          <Argument type="Trainer" name="theTrainer"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setupTableModels" returnType="void" visibility="public"/>
+        <Method name="closeBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TrainingHistTableModel  " package="fitnessapp" visibility="public" xPosition="2126.0" yPosition="324.0">
+      <Fields>
+        <Field name="colHeader" type="String[]" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="sessions" type="ArrayList&lt;TrainingSession&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ArrayList&lt;TrainingSession&gt;" name="sessions"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setSessions" returnType="ArrayList&lt;TrainingSession&gt;" visibility="public">
+          <Argument type="ArrayList&lt;TrainingSession&gt;" name="sessions"/>
+        </Method>
+        <Method name="getValueAt" returnType="int" visibility="public">
+          <Argument type="int" name="rowIndex"/>
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="getColumnName" returnType="int" visibility="public">
+          <Argument type="int" name="column"/>
+        </Method>
+        <Method name="getSessionAt" returnType="int" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UpcomingSessionsWindow  " package="fitnessapp" visibility="public" xPosition="1081.0" yPosition="1199.0">
+      <Fields>
+        <Field name="helpfit" type="HELPFit  " visibility="private"/>
+        <Field name="hfgui" type="HFGUI  " visibility="private"/>
+        <Field name="theMember" type="Member" visibility="private"/>
+        <Field name="stm" type="SessionTableModel   " visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="java.awt.Frame" name="parent"/>
+          <Argument type="boolean" name="modal"/>
+          <Argument type="Member" name="theMember"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setupTableModels" returnType="void" visibility="public"/>
+        <Method name="closeBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="registerBtnActionPerformed" returnType="java.awt.event.ActionEvent" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="helpfit" source="fitnessapp.SignUpTrainerDialog   " target="fitnessapp.HELPFit  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hfgui" source="fitnessapp.MemberTrainingHistoryDialog" target="fitnessapp.HFGUI  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="thtm" source="fitnessapp.MemberTrainingHistoryDialog" target="fitnessapp.TrainingHistTableModel  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="stm" source="fitnessapp.UpcomingSessionsWindow  " target="fitnessapp.SessionTableModel   " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="helpfit" source="fitnessapp.RecordNewSessionDialog   " target="fitnessapp.HELPFit  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hf" source="fitnessapp.HFGUI  " target="fitnessapp.HELPFit  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hfgui" source="fitnessapp.UpcomingSessionsWindow  " target="fitnessapp.HFGUI  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="helpfit" source="fitnessapp.UpcomingSessionsWindow  " target="fitnessapp.HELPFit  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="thtm" source="fitnessapp.TrainerTrainingHistoryDialog   " target="fitnessapp.TrainingHistTableModel  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hfgui" source="fitnessapp.MemberMenuFrame  " target="fitnessapp.HFGUI  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hfgui" source="fitnessapp.SignUpTrainerDialog   " target="fitnessapp.HFGUI  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hfgui" source="fitnessapp.TrainerMenuFrame  " target="fitnessapp.HFGUI  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="helpfit" source="fitnessapp.SignUpMemberDialog   " target="fitnessapp.HELPFit  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hfgui" source="fitnessapp.TrainerTrainingHistoryDialog   " target="fitnessapp.HFGUI  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="fitnessapp.HFGUI  " target="fitnessapp.HELPFit  " sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hfgui" source="fitnessapp.SignUpMemberDialog   " target="fitnessapp.HFGUI  " type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
